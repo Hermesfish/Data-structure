@@ -76,5 +76,17 @@ class List{
              destptr->link = NULL;
 }
 ```
+- 最最重要的Locate()函数
+```c++
+template <class T>
+List<T>::LinkNode<T>* Locate(int i){
+            temp = new LinkNode<T>;
+            temp = first;
+            for(int j = 1; j <= i; j++)
+                temp = temp->link;
+            return temp;
+}
+```
 
+                        
  
