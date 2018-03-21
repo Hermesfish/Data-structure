@@ -38,6 +38,43 @@ class List{
           
           LinkNOde<T>* Locate(int i);     //搜索第i个元素的地址
           
-          bool GetData(int i, T& x);
+          bool GetData(int i, T& x);        
+          
+          bool Insert(int i, T& x);       //将x插在表中第i个元素后
+          
+          bool Remove(int i, T& x);       //删除第i个元素
+          
+          bool isEmpty() const{
+                  return fisrt->link == NULL? true : false;
+          }
+          
+          bool isFull() const   {return false;}
+          
+          void Sort();
+          
+          void Input();
+          
+          void Output();
+          
+          Linst<T>& operator=(List<T>& L);
+ };
  ```
+ 先写几个重要函数
+ - 拷贝函数
+ ```
+ template <class T>
+ List<T>::List(List<T>& L){
+            T data;
+            LinkNode<T>* srcptr = L.getHead();
+            LinkNode<T>* destptr = fisrt = new LinkNode<T>;
+            while(srcptr->link != NULL){
+                        value = srcptr->link->data;
+                        destptr->link = new LinkNode<T>(value);
+                        destptr = destptr->link;
+                        srcptr = srcptr->link;
+             }
+             destptr->link = NULL;
+}
+```
+
  
