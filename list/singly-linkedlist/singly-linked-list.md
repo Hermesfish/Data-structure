@@ -102,5 +102,15 @@ List<T>::bool Insert(int i, T x){
                   current->link = newnode;
 }
 ```
+- 删除函数
+```c++
+template <class T>
+List<T>::bool Remove(int i, T& x){
+                  current = Locate(i-1);        //Remove()操作需要知道第i-1个元素
+                  current->link = current->link->link;
+                  //或写做del = current->link;  current->link = del->link; delete del;
+                  delete current->link;
+}
+```
 
  
