@@ -18,7 +18,7 @@ struct LinkNode{
 template <class T>
 class List{
       protected:
-          LinkNode<T>* first;   //first指针
+          LinkNode<T>* first;   //声明first指针
       public:
           List(){first = new LinkNode<T>;}    //构造函数
           
@@ -96,17 +96,17 @@ List<T>::LinkNode<T>* Locate(int i){
 ```c++
 template <class T>
 List<T>::bool Insert(int i, T x){
-                  newnode = new LinkNode<T>(x);
-                  current = Locate(i);
+                  LinkNode<T>* newnode = new LinkNode<T>(x);
+                  LinkNode<T>* current = Locate(i);
                   newnode->link = current->link;
-                  current->link = newnode;
+                  current->link = newnode;           //newnode本来就是一个指针，一个指向结点的指针，这里都是些指针操作。
 }
 ```
 - 删除函数
 ```c++
 template <class T>
 List<T>::bool Remove(int i, T& x){
-                  current = Locate(i-1);        //Remove()操作需要知道第i-1个元素
+                  LinkNode<T>* current = Locate(i-1);        //Remove()操作需要知道第i-1个元素
                   current->link = current->link->link;
                   //或写做del = current->link;  current->link = del->link; delete del;
                   delete current->link;
