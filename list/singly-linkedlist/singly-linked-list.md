@@ -77,16 +77,30 @@ class List{
 }
 ```
 - 最最重要的Locate()函数
+
 ```c++
 template <class T>
 List<T>::LinkNode<T>* Locate(int i){
-            temp = new LinkNode<T>;
-            temp = first;
-            for(int j = 1; j <= i; j++)
-                temp = temp->link;
-            return temp;
+                  if ( i < 0 ) return NULL;   // i 值不合理,这里为什么不加上超过当前个数的不合理i取值
+                  LinkNode<T> * p =first; 
+                  int k = 0; 
+                  while ( p != NULL && k < i ){     //因为那样需要多加一个当前长度K，而直接判断p是否等于null，更加方便，如果i的取值过大，
+                  //后面的值均为null,p即跳出循环。
+                      p = p->link ; 
+                      k++;
+                  }	    //找第 i 个结点 
+                  return p;    
+}
+```
+- 单链表的插入函数
+```c++
+template <class T>
+List<T>::bool Insert(int i, T x){
+                  newnode = new LinkNode<T>(x);
+                  current = Locate(i);
+                  newnode->link = current->link;
+                  current->link = newnode;
 }
 ```
 
-                        
  
