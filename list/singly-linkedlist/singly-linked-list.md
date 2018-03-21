@@ -61,7 +61,7 @@ class List{
  ```
  先写几个重要函数
  - 拷贝函数
- ```
+ ```c++
  template <class T>
  List<T>::List(List<T>& L){
             T data;
