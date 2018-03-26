@@ -67,7 +67,7 @@
                        .data(nodes)
                        .enter()
                        .append("circle")
-                       .attr("class", "forceCircle");
+                       .attr("class", "forceCircle")
                        .attr("r", 20)
                        .style("fill", function(d, i){return color(i);})
                        .call(force.drag);
