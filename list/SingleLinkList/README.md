@@ -59,7 +59,7 @@ Linklist* Get_Common(Linklist& La, Linklist& Lb){
 ```
 ## 一些其他辅助函数
 ### Get_Tail()函数
-> Get_Tail(Linklist&) -> {LNode*}
+> Get_Tail(Linklist&) -> {LNode*}  
 > 功能说明：参数为单链表，获取单链表的尾指针，返回尾指针。
 ```c++
 LNode* Get_Tail(Linklist& L){
@@ -68,5 +68,92 @@ LNode* Get_Tail(Linklist& L){
 		p = p->next;
 	}
 	return p;
+}
+```
+### Append()函数
+> Append(Linklist&, int) -> {bool}  
+> 功能说明：参数为单链表和整数，添加成功返回true。
+```c++
+bool Append(Linklist& L, int x){
+	LNode* tail;
+	tail = Get_Tail(L);
+	LNode* r = new LNode;
+	r->data = x;
+	r->next = tail->next;
+	tail->next = r;
+	tail = tail->next;
+	return true;
+}
+```
+### Print()函数
+> Print(Linklist&)
+> 功能说明：参数为单链表，输出链表中的数据元素，无返回值。
+```c++
+void Print(Linklist& L){
+	LNode* p = L.head->next;
+	int length = 0;
+	while(p){
+		cout<<p->data<<endl;
+		p = p->next;
+		length++;
+	}
+
+	cout << length << endl;
+}
+```
+### Empty()函数
+> Empty(Linklist&) -> {bool}
+> 功能说明：参数为单链表，清空单链表的所有元素，释放内存。
+```c++
+bool Empty(Linklist& L){
+	LNode* p = L.head;
+	LNode* q;
+	while(p->next){
+		q = p->next;
+		p->next = q->next;
+		delete(q);
+	}
+	if(p->next==NULL){
+		cout<<"Linklist is Empty."<<endl;
+	}
+}
+```
+### main()函数
+> 功能说明：生成两个递增顺序的带头结点的单链表，输出新生成链表C的元素。
+```c++
+int main(){
+
+	//将数组放入A链表中
+	Linklist La;
+	LNode* temp = new LNode;
+	La.head = temp;	//如何实现带一个空节点
+	La.head->next = NULL;
+	int array[10]={1,2,3,4,5,6,7,8,9,10};
+	for(int i = 0; i < 10; i++){
+		Append(La,array[i]);
+	}
+
+	//将数组放入B链表中
+	Linklist Lb;
+	LNode* temp1 = new LNode;
+	Lb.head = temp1;	//如何实现带一个空节点
+	Lb.head->next = NULL;	//可简略
+	int array_1[8]={2,5,5,5,7,10,16,22};
+	for(int i = 0; i < 8; i++){
+		Append(Lb,array_1[i]);
+	}
+	
+	Linklist* Lc;
+	Lc = Get_Common(La,Lb);
+
+	Print(*Lc);
+	//Print(La);
+	Empty(*Lc);
+	Print(*Lc);
+
+	Empty(La);
+	Empty(Lb);
+
+	return 0;
 }
 ```
