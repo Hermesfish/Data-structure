@@ -101,7 +101,7 @@ Linklist* Get_Common(Linklist& La, Linklist& Lb){
 	return Lc;
 }
 ```
-## 一些其他辅助函数
+## step3 一些其他辅助函数
 ### Get_Tail()函数
 > Get_Tail(Linklist&) -> {LNode*}  
 > 功能说明：参数为单链表，获取单链表的尾指针，返回尾指针。
@@ -201,3 +201,5 @@ int main(){
 	return 0;
 }
 ```
+### 运行截图
+<img src="run.jpg">
