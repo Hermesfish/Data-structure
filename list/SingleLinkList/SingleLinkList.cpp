@@ -14,7 +14,7 @@ struct Linklist
 	LNode* head;
 };
 //声明两个简单的struct，LNode和Linklist
-//由于未对结构体进行初始化，所以要自己初始化，还要加上头结点
+//由于未对结构体进行初始化，所以要自己初始化，还要加上头结点。
 
 LNode* Get_Tail(Linklist& L){
 	LNode* p = L.head;
