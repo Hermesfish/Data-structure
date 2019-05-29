@@ -7,12 +7,12 @@ struct SqStack{
 	int top = -1;
 };
 
-int Pop(SqStack& S){
+bool Pop(SqStack& S, int& x){
 	bool StackEmpty(SqStack&); 
 	if(StackEmpty(S))
-		return -1;
-	int x = S.data[S.top--];
-	return x;
+		return false;
+	x = S.data[S.top--];
+	return true;
 }
 
 bool Push(SqStack& S, int x){
@@ -42,10 +42,11 @@ int main(){
 	Push(Stack,8);
 	Push(Stack,5);
 
-	int x = Pop(Stack);
+	int x = 0;
+	Pop(Stack,x);
 	cout<<x<<endl;
 
-	x = Pop(Stack);
+	Pop(Stack,x);
 	cout<<x<<endl;
 
 	bool flag = StackEmpty(Stack);
